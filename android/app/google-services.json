@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436635449580",
+    "project_id": "cristingol-87451",
+    "storage_bucket": "cristingol-87451.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436635449580:android:579980475b30bc9c9b4dc9",
+        "android_client_info": {
+          "package_name": "com.example.fake_games_socialmedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436635449580-t9nvm7a1507e6q0ve2btbe4l8k3ncgks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJCsuYFxrkEmRH6Qfs5lstAB3ITeROHqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436635449580-t9nvm7a1507e6q0ve2btbe4l8k3ncgks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
