@@ -16,36 +16,95 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RoundedLoadingButton(
               color: Colors.black,
-              resetDuration: Duration(seconds: 3),
+              resetDuration: Duration(seconds: 1),
               resetAfterDuration: true,
               child:
                   Text('Iniciar Juego', style: TextStyle(color: Colors.white)),
               controller: _btnController,
-              onPressed: () {}),
-          ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Facebookpage2()),
+                showDialog(
+                  context: context,
+                  builder: (ctx) => AlertDialog(
+                    title: Text("PRIMERO REGISTRATE..!"),
+                    content: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.black),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Facebookpage2()),
+                                );
+                              },
+                              child: Text("Facebook")),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.black),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => GmailPage()),
+                                );
+                              },
+                              child: Text("Gmail")),
+                        )
+                      ],
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(ctx).pop();
+                        },
+                        child: Center(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            width: 200,
+                            padding: const EdgeInsets.all(14),
+                            child: Center(
+                              child: Text(
+                                "OK",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 );
-              },
-              child: Text("Facebook")),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GmailPage()),
-                );
-              },
-              child: Text("Gmail"))
+              }),
         ],
       ),
+    );
+  }
+}
+
+class Dialog extends StatelessWidget {
+  const Dialog({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      color: Colors.amber,
     );
   }
 }
