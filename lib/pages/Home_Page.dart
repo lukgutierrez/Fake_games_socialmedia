@@ -16,80 +16,87 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: Colors.black,
+      body: Stack(
         children: [
-          RoundedLoadingButton(
-              color: Colors.black,
-              resetDuration: Duration(seconds: 1),
-              resetAfterDuration: true,
-              child:
-                  Text('Iniciar Juego', style: TextStyle(color: Colors.white)),
-              controller: _btnController,
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (ctx) => AlertDialog(
-                    title: Text("PRIMERO REGISTRATE..!"),
-                    content: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.black),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Facebookpage2()),
-                                );
-                              },
-                              child: Text("Facebook")),
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.black),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => GmailPage()),
-                                );
-                              },
-                              child: Text("Gmail")),
-                        )
-                      ],
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(ctx).pop();
-                        },
-                        child: Center(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(45),
+          Image(image: AssetImage("assets/Luk.gif")),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RoundedLoadingButton(
+                  color: Colors.white,
+                  resetDuration: Duration(seconds: 1),
+                  resetAfterDuration: true,
+                  child: Text('Iniciar Juego',
+                      style: TextStyle(color: Colors.black)),
+                  controller: _btnController,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (ctx) => AlertDialog(
+                        title: Text("PRIMERO REGISTRATE..!"),
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(50),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.black),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Facebookpage2()),
+                                    );
+                                  },
+                                  child: Text("Facebook")),
                             ),
-                            width: 200,
-                            padding: const EdgeInsets.all(14),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(50),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.black),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => GmailPage()),
+                                    );
+                                  },
+                                  child: Text("Gmail")),
+                            )
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(ctx).pop();
+                            },
                             child: Center(
-                              child: Text(
-                                "OK",
-                                style: TextStyle(color: Colors.white),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(45),
+                                ),
+                                width: 200,
+                                padding: const EdgeInsets.all(14),
+                                child: Center(
+                                  child: Text(
+                                    "OK",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                );
-              }),
+                    );
+                  }),
+            ],
+          ),
         ],
       ),
     );
